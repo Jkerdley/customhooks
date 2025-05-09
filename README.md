@@ -1,54 +1,76 @@
-# React + TypeScript + Vite
+# 🎣 Коллекция кастомных React-хуков
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+Набор переиспользуемых хуков для типовых задач в React-приложениях.
 
-Currently, two official plugins are available:
+## 📜 Список хуков
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+### `useViewportSize()`
 
-## Expanding the ESLint configuration
+Отслеживает размеры окна браузера.
 
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
+const { width, height } = useViewportSize();
 
-```js
-export default tseslint.config({
-  extends: [
-    // Remove ...tseslint.configs.recommended and replace with this
-    ...tseslint.configs.recommendedTypeChecked,
-    // Alternatively, use this for stricter rules
-    ...tseslint.configs.strictTypeChecked,
-    // Optionally, add this for stylistic rules
-    ...tseslint.configs.stylisticTypeChecked,
-  ],
-  languageOptions: {
-    // other options...
-    parserOptions: {
-      project: ['./tsconfig.node.json', './tsconfig.app.json'],
-      tsconfigRootDir: import.meta.dirname,
-    },
-  },
-})
+Возвращает:
+
+width (number) - Ширина вьюпорта в пикселях
+
+height (number) - Высота вьюпорта в пикселях
+
+### `useFetch(url)`
+
+Выполняет запросы с обработкой состояния загрузки и ошибок.
+
+const { data, isLoading, error, refetch } = useFetch('https://api.example.com/posts');
+
+Параметры:
+
+url (string) - Конечная точка API
+
+Возвращает:
+
+data (array) - Полученные данные
+
+isLoading (boolean) - Флаг загрузки
+
+error (string|null) - Текст ошибки
+
+refetch (function) - Функция повторного запроса
+
+### `useHover()`
+
+Определяет наведение курсора на элемент.
+
+const { hovered, ref } = useHover();
+return <div ref={ref}>{hovered ? 'Наведено' : 'Не наведено'}</div>;
+
+Возвращает:
+
+hovered (boolean) - Состояние наведения
+
+ref (React ref) - Ref для присоединения к элементу
+
+### `useLocalStorage(key)`
+
+Работает с localStorage как с React-состоянием.
+
+const [value, { setItem, removeItem }] = useLocalStorage('my-key');
+
+Параметры:
+
+key (string) - Ключ в localStorage
+
+Возвращает:
+
+Массив содержащий:
+
+value (string|null) - Текущее значение
+
+Объект с методами:
+
+setItem (function) - Установить новое значение
+
+removeItem (function) - Удалить значение
+
 ```
 
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
-
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
-
-export default tseslint.config({
-  plugins: {
-    // Add the react-x and react-dom plugins
-    'react-x': reactX,
-    'react-dom': reactDom,
-  },
-  rules: {
-    // other rules...
-    // Enable its recommended typescript rules
-    ...reactX.configs['recommended-typescript'].rules,
-    ...reactDom.configs.recommended.rules,
-  },
-})
 ```
