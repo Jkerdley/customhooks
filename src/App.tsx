@@ -1,10 +1,10 @@
 import "./App.css";
-import { HoverDemo } from "./components/HoverDemo";
+import { ViewportDemo } from "./components/ViewportDemo";
 
 function App() {
   return (
     <div>
-      <HoverDemo />
+      <ViewportDemo />
     </div>
   );
 }
