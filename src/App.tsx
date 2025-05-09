@@ -1,10 +1,10 @@
 import "./App.css";
-import { ViewportDemo } from "./components/ViewportDemo";
+import { ScrollDemo } from "./components/ScrollDemo";
 
 function App() {
   return (
-    <div>
-      <ViewportDemo />
+    <div className="main-container">
+      <ScrollDemo />
     </div>
   );
 }

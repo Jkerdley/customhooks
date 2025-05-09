@@ -4,6 +4,16 @@
   padding: 2rem;
   text-align: center;
 }
+.main-container {
+  display: flex;
+  height: 1900px;
+}
+
+.coordinates {
+  margin-bottom: 2rem;
+  position: sticky;
+  top: 0;
+}
 
 .logo {
   height: 6em;
