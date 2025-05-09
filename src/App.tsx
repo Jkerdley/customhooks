@@ -1,10 +1,10 @@
 import "./App.css";
-import { Demo } from "./components/Demo";
+import { HoverDemo } from "./components/HoverDemo";
 
 function App() {
   return (
     <div>
-      <Demo></Demo>
+      <HoverDemo />
     </div>
   );
 }
